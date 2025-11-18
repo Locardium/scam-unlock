@@ -1,176 +1,47 @@
-<<<<<<< HEAD
-# 🚀 Xposed Module Template
+# SCam Unlock - Samsung Camera Unlock
 
-A clean, ready-to-use template for building Xposed Framework modules with modern Android development tools.
-
-## 📋 Overview
-
-This project provides a minimal, properly configured Xposed module template that you can use as a starting point for your own Xposed modules. It includes all the necessary configuration and boilerplate code to get you up and running quickly.
+An LSPosed (Xposed) module to unlock hidden features and remove restrictions in Samsung's stock Camera app.
 
 ## ✨ Features
 
-- ✅ **Modern Gradle Setup** - Uses Gradle Kotlin DSL (`.gradle.kts`)
-- ✅ **Proper Dependencies** - Correctly configured Xposed API with `compileOnly` scope
-- ✅ **Clean Architecture** - Separate module class from Android Activity
-- ✅ **Ready to Build** - No additional setup required
-- ✅ **Example Hook** - Simple package load logging demonstration
-- ✅ **Android Studio Compatible** - Works with latest Android Studio versions
+The main goal of this module is to enable features that Samsung artificially restricts.
 
-## 🛠️ Getting Started
+* **Flash on Ultra Wide:** Allows using the flash (torch) when taking photos or recording videos with the Ultra Wide (UW) lens.
+* **Removes Dimming:** Disables the "dimming" of inactive lenses when switching between them.
+* **Zoom Fixes:** Corrects zoom behavior in certain video modes.
+* **Ultra Wide Access:** Ensures the Ultra Wide lens is always accessible when zooming out.
 
-### Prerequisites
+## 🚀 Installation & Usage
 
-- Android Studio (latest version recommended)
-- Android SDK with API level 24 or higher
-- Device with Xposed Framework installed (rooted device or emulator)
+1.  Download and install the latest `.apk` from the [Releases page](https://github.com/Locardium/scam-unlock/releases).
+2.  Open the **LSPosed Manager** app.
+3.  Activate the **SCam Unlock** module.
+4.  Make sure to select the **Samsung Camera** (`com.sec.android.app.camera`) in the module's scope.
+5.  **Restart** camera app.
+6.  Enjoy.
 
-### Setup
+## 📷 Showcase
 
-1. **Clone this repository**
-   ```bash
-   git clone https://github.com/yourusername/xposed-module-template.git
-   cd xposed-module-template
-   ```
+![Showcase Image Placeholder](https://github.com/Locardium/scam-unlock/blob/main/Screenshot_1.png?raw=true)
 
-2. **Open in Android Studio**
-   - File → Open → Select the project directory
-   - Wait for Gradle sync to complete
+## ✅ Tested Compatibility
 
-3. **Customize the module**
-   - Update `app/build.gradle.kts` with your app details
-   - Modify `AndroidManifest.xml` metadata (app name, description)
-   - Edit `XposedModule.java` to implement your hooks
+This module is developed and tested on the following configuration. It is not guaranteed to work on other versions, although it might.
 
-4. **Build and install**
-   ```bash
-   ./gradlew assembleDebug
-   ```
+| Info | Version |
+| :--- | :--- |
+| **Software** | `One UI 8` |
+| **SCam Unlock Version** | `1.0` |
+| **Samsung Camera Version**| `16.0.00.66` |
+| **Device** | Samsung Galaxy S24+ |
+| **Model** | `SM-S926B/DS` |
 
-## 📁 Project Structure
+## ⚠️ Requirements
 
-```
-app/src/main/
-├── assets/
-│   └── xposed_init              # Entry point for Xposed Framework
-├── java/com/example/xposedtest/
-│   ├── MainActivity.java        # Regular Android Activity
-│   └── XposedModule.java        # Xposed hook implementation
-└── AndroidManifest.xml          # Module metadata and permissions
-```
+* A Samsung device with **Root**.
+* **[LSPosed](https://github.com/LSPosed/LSPosed)** installed and functional.
+* Stock Samsung Camera app (One UI).
 
-## 🔧 Key Files Explained
+## Disclaimer
 
-### `XposedModule.java`
-```java
-public class XposedModule implements IXposedHookLoadPackage {
-    @Override
-    public void handleLoadPackage(XC_LoadPackage.LoadPackageParam lpparam) throws Throwable {
-        XposedBridge.log("Test Module - Package loaded: " + lpparam.packageName);
-    }
-}
-```
-This is where your Xposed hooks go. Implement different interfaces for various hook types.
-
-### `xposed_init`
-```
-com.example.xposedtest.XposedModule
-```
-Tells Xposed Framework which class contains your module implementation.
-
-### `AndroidManifest.xml`
-Contains essential Xposed metadata:
-- `xposedmodule` - Marks this as an Xposed module
-- `xposeddescription` - Module description shown in Xposed Installer
-- `xposedminversion` - Minimum Xposed API version required
-
-## 🎯 Common Hook Types
-
-Extend your module by implementing additional interfaces:
-
-| Interface | Purpose |
-|-----------|---------|
-| `IXposedHookLoadPackage` | Hook into app loading |
-| `IXposedHookZygoteInit` | Hook into system startup |
-| `IXposedHookInitPackageResources` | Hook into resource loading |
-
-## 📝 Example Hooks
-
-### Method Hooking
-```java
-XposedHelpers.findAndHookMethod("com.example.TargetClass",
-    lpparam.classLoader, "methodName",
-    String.class, // parameter types
-    new XC_MethodHook() {
-        @Override
-        protected void beforeHookedMethod(MethodHookParam param) throws Throwable {
-            // Code before original method
-        }
-
-        @Override
-        protected void afterHookedMethod(MethodHookParam param) throws Throwable {
-            // Code after original method
-        }
-    });
-```
-
-### Constructor Hooking
-```java
-XposedHelpers.findAndHookConstructor("com.example.TargetClass",
-    lpparam.classLoader, String.class,
-    new XC_MethodHook() {
-        @Override
-        protected void afterHookedMethod(MethodHookParam param) throws Throwable {
-            // Constructor hook logic
-        }
-    });
-```
-
-## 🚨 Important Notes
-
-- **Dependencies**: The Xposed API is marked as `compileOnly` to prevent it from being bundled into your APK
-- **Testing**: Test your module thoroughly on different Android versions and devices
-- **Compatibility**: Always check target app compatibility when hooking specific apps
-- **Security**: Be mindful of what data you access and how you handle it
-
-## 🐛 Troubleshooting
-
-### Module not loading
-- Check if module is enabled in Xposed Installer
-- Verify `xposed_init` file contains correct class path
-- Check Xposed logs for error messages
-
-### ClassNotFoundException
-- Ensure Xposed API is marked as `compileOnly` in build.gradle
-- Verify the target class exists in the hooked app
-
-### Build errors
-- Clean and rebuild: `./gradlew clean build`
-- Check Android Studio sync status
-- Verify SDK and build tools versions
-
-## 📚 Resources
-
-This template is based on the official Xposed documentation:
-- [Xposed Development Tutorial](https://github.com/rovo89/xposedbridge/wiki/development-tutorial)
-- [Xposed Framework API](https://github.com/rovo89/XposedBridge/wiki/Using-the-Xposed-Framework-API)
-- [Xposed API Reference](https://api.xposed.info/)
-
-## 🤝 Contributing
-
-Contributions are welcome! Please feel free to submit issues and pull requests to improve this template.
-
-## 📄 License
-
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
-
-## ⚠️ Disclaimer
-
-This template is for educational and development purposes. Use Xposed modules responsibly and respect app developers' terms of service. The authors are not responsible for any misuse of this template.
-
----
-
-**Happy Hooking!** 🎣
-=======
-# scam-unlock
-An Xposed/LSPosed module that removes artificial restrictions
->>>>>>> 1981ad3722f73ac40de080ced8c2061f8b722b68
+This is an Xposed module and modifies system app behavior. Use at your own risk. I am not responsible for any issues with your camera app or device.
