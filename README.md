@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # 🚀 Xposed Module Template
 
 A clean, ready-to-use template for building Xposed Framework modules with modern Android development tools.
@@ -169,3 +170,7 @@ This template is for educational and development purposes. Use Xposed modules re
 ---
 
 **Happy Hooking!** 🎣
+=======
+# scam-unlock
+An Xposed/LSPosed module that removes artificial restrictions
+>>>>>>> 1981ad3722f73ac40de080ced8c2061f8b722b68
