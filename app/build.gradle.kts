@@ -3,11 +3,11 @@ plugins {
 }
 
 android {
-    namespace = "com.example.xposedtest"
+    namespace = "com.locardium.scamunlock"
     compileSdk = 36
 
     defaultConfig {
-        applicationId = "com.example.xposedtest"
+        applicationId = "com.locardium.scamunlock"
         minSdk = 24
         targetSdk = 36
         versionCode = 1

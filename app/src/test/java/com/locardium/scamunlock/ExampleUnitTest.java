@@ -1,4 +1,4 @@
-package com.example.xposedtest;
+package com.locardium.scamunlock;
 
 import org.junit.Test;
 

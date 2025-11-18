@@ -1,4 +1,4 @@
-package com.example.xposedtest;
+package com.locardium.scamunlock;
 
 import android.content.Context;
 
