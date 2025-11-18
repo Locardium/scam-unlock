@@ -7,9 +7,7 @@ An LSPosed (Xposed) module to unlock hidden features and remove restrictions in 
 The main goal of this module is to enable features that Samsung artificially restricts.
 
 * **Flash on Ultra Wide:** Allows using the flash (torch) when taking photos or recording videos with the Ultra Wide (UW) lens.
-* **Removes Dimming:** Disables the "dimming" of inactive lenses when switching between them.
-* **Zoom Fixes:** Corrects zoom behavior in certain video modes.
-* **Ultra Wide Access:** Ensures the Ultra Wide lens is always accessible when zooming out.
+* **Lens Switching with Flash:** Allows switching from the Ultra Wide camera to other lenses while the flash is active.
 
 ## 🚀 Installation & Usage
 
